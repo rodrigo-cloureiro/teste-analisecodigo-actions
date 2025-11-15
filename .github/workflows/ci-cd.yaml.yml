@@ -53,13 +53,13 @@ jobs:
       - name: Run CLOC
         uses: djdefi/cloc-action@6
         with:
-          args: --exclude-lang=YAML --md --report-file=${GITHUB_WORKSPACE}/cloc.md
+          options: --exclude-lang=YAML --md --report-file=cloc.md
 
       - name: Upload CLOC report
         uses: actions/upload-artifact@v4
         with:
           name: cloc-report
-          path: ${GITHUB_WORKSPACE}/cloc.md
+          path: cloc.md
 
   build:
     needs: analyse
