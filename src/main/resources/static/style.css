@@ -1,0 +1,153 @@
+*:not(h1, h2, h3, h4, h5, h6) {
+    font-size: 16px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+
+    margin: 30px;
+
+    background-color: #f4f4f4;
+}
+
+h1,
+h2 {
+    color: #333;
+}
+
+a:not {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+form {
+    background-color: #fff;
+
+    padding: 20px;
+    margin-bottom: 20px;
+
+    border-radius: 5px;
+}
+
+label {
+    display: block;
+
+    margin-bottom: 10px;
+}
+
+input,
+select {
+    padding: 5px;
+
+    width: 100%;
+
+    margin-top: 5px;
+}
+
+.button {
+    padding: 10px 15px;
+
+    background-color: #007bff;
+    color: #fff;
+
+    border: none;
+    border-radius: 3px;
+
+    cursor: pointer;
+    text-decoration: none;
+
+    font-size: 14px;
+}
+
+.button:hover {
+    background-color: #0056b3;
+    text-decoration: none;
+}
+
+.button.cancel,
+.button.remove {
+    background-color: #ff0000;
+}
+
+.button.cancel:hover,
+.button.remove:hover {
+    background-color: #cd0a0a;
+}
+
+.tabela-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+
+    border: none;
+    border-collapse: collapse;
+
+    background-color: #fff;
+}
+
+th,
+td {
+    padding: 10px;
+
+    border: none;
+
+    text-align: left;
+}
+
+th {
+    background-color: #fff;
+}
+
+tr:nth-child(odd) {
+    background-color: #eeeeee;
+}
+
+tr:hover {
+    background-color: #e0e0e0;
+}
+
+.actions .button {
+    margin-right: 5px;
+}
+
+.mensagem-erro {
+    color: red;
+    font-size: 0.775em;
+    display: block;
+    margin: 5px 0;
+    font-weight: bold;
+}
+
+input.invalido {
+    border: 1px solid red;
+}
+
+input.invalido:focus {
+    outline: 1px solid red;
+}
+
+@media (max-width: 460px) {
+    h1 {
+        font-size: 1.6em;
+    }
+
+    .button {
+        width: 100%;
+        margin: 2.5px 0;
+    }
+
+    .tabela-container {
+        overflow-x: auto;
+    }
+
+    table {
+        width: 200%;
+    }
+}

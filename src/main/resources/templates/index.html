@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Gerenciador de Produtos</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <h1>Gerenciador de Produtos</h1>
+
+        <form id="produto-form">
+            <input type="hidden" id="produto-id" />
+
+            <label>
+                Nome:
+                <input
+                    type="text"
+                    id="nome"
+                    placeholder="Informe o nome do produto"
+                    required
+                />
+            </label>
+
+            <label>
+                Descrição:
+                <input
+                    type="text"
+                    id="descricao"
+                    placeholder="Informe a descrição do produto"
+                    required
+                />
+            </label>
+
+            <label>
+                Preço:
+                <input
+                    type="number"
+                    id="preco"
+                    step="0.01"
+                    placeholder="Informe o preço do produto"
+                    required
+                />
+            </label>
+
+            <label
+                >Quantidade:
+                <input
+                    type="number"
+                    id="quantidade"
+                    placeholder="Informe a quantidade do produto"
+                    required
+                />
+            </label>
+
+            <span class="mensagem-erro"></span>
+
+            <button type="submit" class="button">Salvar</button>
+            <button type="button" class="button cancel">Cancelar</button>
+        </form>
+
+        <h1>Produtos Cadastrados</h1>
+
+        <form id="pesquisa-form">
+            <label>
+                Pesquisar Produto por ID:
+                <input
+                    type="text"
+                    id="pesquisa-id"
+                    placeholder="Digite o ID do produto"
+                    required
+                />
+            </label>
+            <button type="submit" class="button">Buscar</button>
+        </form>
+
+        <label>
+            Ordenar por:
+            <select name="order-by" id="order-by">
+                <option selected disabled>Escolha uma opção</option>
+                <option value="nome">Nome</option>
+                <option value="preco">Preço</option>
+                <option value="quantidade">Quantidade</option>
+            </select>
+        </label>
+
+        <div class="tabela-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Preço</th>
+                        <th>Quantidade</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-produtos"></tbody>
+            </table>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>

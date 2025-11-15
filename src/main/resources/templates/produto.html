@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Detalhes do Produto</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1 id="titulo">Detalhes do Produto</h1>
+
+    <div id="detalhes-produto" style="display: none">
+      <p><strong>ID:</strong> <span id="produto-id"></span></p>
+      <p><strong>Nome:</strong> <span id="produto-nome"></span></p>
+      <p><strong>Descrição:</strong> <span id="produto-descricao"></span></p>
+      <p><strong>Preço:</strong> <span id="produto-preco"></span></p>
+      <p><strong>Quantidade:</strong> <span id="produto-quantidade"></span></p>
+    </div>
+
+    <div id="produto-nao-encontrado" style="display: none">
+      <p id="mensagem-erro"></p>
+    </div>
+
+    <a href="/" class="button">Voltar</a>
+
+    <script src="produto.js"></script>
+  </body>
+</html>
