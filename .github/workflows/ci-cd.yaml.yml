@@ -51,7 +51,7 @@ jobs:
           path: codeql-results.sarif
 
       - name: Run CLOC
-        uses: djdefi/cloc-action@v6
+        uses: djdefi/cloc-action@6
         with:
           args: --exclude-lang=YAML --md --report-file=cloc.md
 
