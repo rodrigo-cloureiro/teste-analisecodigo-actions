@@ -61,6 +61,13 @@ jobs:
           name: cloc-report
           path: cloc.md
 
+      - name: Run Checkstyle
+        uses: dbelyaev/action-checkstyle@v3
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-check
+          level: warning
+
   build:
     needs: analyse
     runs-on: ubuntu-latest
