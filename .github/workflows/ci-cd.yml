@@ -47,7 +47,7 @@ jobs:
       - name: Salvar arquivo SARIF como artifact
         uses: actions/upload-artifact@v4
         with:
-          name: codeql-results
+          name: "${{ github.ref_name }}_codeql-results"
           path: codeql-results.sarif
 
       - name: Run CLOC
@@ -58,7 +58,7 @@ jobs:
       - name: Upload CLOC report
         uses: actions/upload-artifact@v4
         with:
-          name: cloc-report
+          name: "${{ github.ref_name }}_cloc-report"
           path: cloc.md
 
       - name: Run Checkstyle (Maven)
@@ -67,7 +67,7 @@ jobs:
       - name: Upload Checkstyle report
         uses: actions/upload-artifact@v4
         with:
-          name: checkstyle-report
+          name: "${{ github.ref_name }}_checkstyle-report"
           path: target/checkstyle-result.xml
 
       - name: Run SpotBugs
@@ -76,7 +76,7 @@ jobs:
       - name: Upload SpotBugs report
         uses: actions/upload-artifact@v4
         with:
-          name: spotbugs-report
+          name: "${{ github.ref_name }}_spotbugs-report"
           path: |
             target/spotbugsXml.xml
             target/site/spotbugs.html
