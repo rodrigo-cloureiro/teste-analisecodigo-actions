@@ -31,6 +31,9 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
+      - name: Criar pasta para os relatórios
+        run: mkdir -p reports/${{ matrix.branch }}
+
       - name: Inicializar CodeQL
         uses: github/codeql-action/init@v4
         with:
@@ -43,45 +46,36 @@ jobs:
       - name: Executar análise de CodeQL
         uses: github/codeql-action/analyze@v4
         with:
-          output: codeql-results.sarif
+          output: reports/${{ matrix.branch }}/codeql-results.sarif
           category: "/language:${{ matrix.language }}"
-
-      - name: Salvar arquivo SARIF como artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: "${{ matrix.branch }}_codeql-results"
-          path: codeql-results.sarif
 
       - name: Run CLOC
         uses: djdefi/cloc-action@6
         with:
           options: --exclude-lang=YAML --md --report-file=cloc.md
 
-      - name: Upload CLOC report
-        uses: actions/upload-artifact@v4
-        with:
-          name: "${{ matrix.branch }}_cloc-report"
-          path: cloc.md
+      - name: Mover CLOC report
+        run: mv cloc.md reports/${{ matrix.branch }}/cloc.md
 
       - name: Run Checkstyle (Maven)
         run: mvn checkstyle:checkstyle
 
-      - name: Upload Checkstyle report
-        uses: actions/upload-artifact@v4
-        with:
-          name: "${{ matrix.branch }}_checkstyle-report"
-          path: target/checkstyle-result.xml
+      - name: Mover Checkstyle report
+        run: mv target/checkstyle-result.xml reports/${{ matrix.branch }}/checkstyle-result.xml
 
       - name: Run SpotBugs
         run: mvn spotbugs:spotbugs
 
-      - name: Upload SpotBugs report
+      - name: Mover SpotBugs report
+        run: |
+          mv target/spotbugsXml.xml reports/${{ matrix.branch }}/spotbugs.xml
+          mv target/site/spotbugs.html reports/${{ matrix.branch }}/spotbugs.html
+
+      - name: Upload dos relatórios
         uses: actions/upload-artifact@v4
         with:
-          name: "${{ matrix.branch }}_spotbugs-report"
-          path: |
-            target/spotbugsXml.xml
-            target/site/spotbugs.html
+          name: "reports-${{ matrix.branch }}"
+          path: reports/${{ matrix.branch }}
 
   build:
     needs: analyse
