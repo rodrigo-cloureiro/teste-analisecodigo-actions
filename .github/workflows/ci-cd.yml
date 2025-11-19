@@ -17,13 +17,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        branch: [ "main", "teste" ]
         language: [ "java" ]
 
     steps:
       - name: Checkout do código
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.ref }}
+          ref: ${{ matrix.branch }}
 
       - name: Configurar JDK (Java 21)
         uses: actions/setup-java@v4
@@ -49,7 +50,7 @@ jobs:
       - name: Salvar arquivo SARIF como artifact
         uses: actions/upload-artifact@v4
         with:
-          name: "${{ github.ref_name }}_codeql-results"
+          name: "${{ matrix.branch }}_codeql-results"
           path: codeql-results.sarif
 
       - name: Run CLOC
@@ -60,7 +61,7 @@ jobs:
       - name: Upload CLOC report
         uses: actions/upload-artifact@v4
         with:
-          name: "${{ github.ref_name }}_cloc-report"
+          name: "${{ matrix.branch }}_cloc-report"
           path: cloc.md
 
       - name: Run Checkstyle (Maven)
@@ -69,7 +70,7 @@ jobs:
       - name: Upload Checkstyle report
         uses: actions/upload-artifact@v4
         with:
-          name: "${{ github.ref_name }}_checkstyle-report"
+          name: "${{ matrix.branch }}_checkstyle-report"
           path: target/checkstyle-result.xml
 
       - name: Run SpotBugs
@@ -78,7 +79,7 @@ jobs:
       - name: Upload SpotBugs report
         uses: actions/upload-artifact@v4
         with:
-          name: "${{ github.ref_name }}_spotbugs-report"
+          name: "${{ matrix.branch }}_spotbugs-report"
           path: |
             target/spotbugsXml.xml
             target/site/spotbugs.html
