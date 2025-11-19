@@ -47,7 +47,13 @@ jobs:
         uses: github/codeql-action/analyze@v4
         with:
           output: reports/${{ matrix.branch }}
-          category: "codeql-results"
+          category: "/language:${{ matrix.language }}"
+
+      - name: Renomear arquivo SARIF
+        run: |
+          ORIGINAL="reports/${{ matrix.branch }}/${{ matrix.language }}.sarif"
+          NOVO="reports/${{ matrix.branch }}/codeql-results.sarif"
+          mv "$ORIGINAL" "$NOVO"
 
       - name: Run CLOC
         uses: djdefi/cloc-action@6
