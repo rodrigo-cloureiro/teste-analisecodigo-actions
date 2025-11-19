@@ -177,6 +177,8 @@
                             <version>1.12.0</version>
                         </plugin>
                     </plugins>
+                    <xmlOutput>true</xmlOutput>
+                    <htmlOutput>true</htmlOutput>
                 </configuration>
             </plugin>
         </plugins>
