@@ -86,8 +86,7 @@ jobs:
         uses: zaproxy/action-full-scan@v0.13.0
         with:
           target: 'http://localhost:8080'
-          rules_file_name: '.zap/rules.tsv'
-          cmd_options: '-a -m 10 -T 60 -html -o reports/${{ matrix.branch }}/zap-report.html'
+          cmd_options: '-a -m 10 -T 60 -r reports/${{ matrix.branch }}/zap-report.html'
 
       - name: Parar aplicação
         if: always()
