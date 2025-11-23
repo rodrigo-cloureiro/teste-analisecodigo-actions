@@ -90,7 +90,7 @@ jobs:
         with:
           target: 'http://localhost:8080'
           cmd_options: >
-            -a -m 10 -T 60
+            -a -m 10 -T 60 -I
             -J /zap/wrk/reports/${{ matrix.branch }}/report.json
             -w /zap/wrk/reports/${{ matrix.branch }}/report.md
             -r /zap/wrk/reports/${{ matrix.branch }}/report.html
